@@ -14,6 +14,6 @@ class City extends Model
 
     public function estateCity() : HasMany
     {
-        return $this->hasMany(Estates::class());
+        return $this->hasMany(Estates::class);
     }
 }

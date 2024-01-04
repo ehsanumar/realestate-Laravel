@@ -14,6 +14,6 @@ class EstatesStatus extends Model
 
     public function estateStatus() : HasMany
     {
-        return $this->hasMany(Estates::class());
+        return $this->hasMany(Estates::class);
     }
 }

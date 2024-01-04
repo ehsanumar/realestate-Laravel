@@ -14,6 +14,6 @@ class EstatesType extends Model
 
     public function estateType() :HasMany
     {
-        return $this->hasMany(Estates::class());
+        return $this->hasMany(Estates::class);
     }
 }

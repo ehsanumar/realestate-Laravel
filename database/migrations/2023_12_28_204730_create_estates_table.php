@@ -15,9 +15,7 @@ return new class extends Migration
     {
         Schema::create('estates', function (Blueprint $table) {
             $table->id();
-            $table->text('estate_name');
             $table->foreignId('city_id')->constrained('cities')->onDelete('cascade');
-            $table->foreignId('image_id')->constrained('images')->onDelete('cascade');
             $table->foreignId('estate_type')->constrained('estates_types')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('status_id')->constrained('estates_statuses')->onDelete('cascade');
