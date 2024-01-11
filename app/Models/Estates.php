@@ -2,25 +2,23 @@
 
 namespace App\Models;
 
-use App\Models\{City, User, EstatesType, EstatesStatus};
 use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\{City, User, EstatesType, EstatesStatus};
 
 class Estates extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
 
     protected $fillable = [
-        'estate_name',
         'city_id',
         'estate_type',
         'user_id',
         'status_id',
         'description',
-        'location',
         'number_of_bathroom',
         'number_of_bedroom',
         'number_of_kitchen',
@@ -29,6 +27,23 @@ class Estates extends Model implements HasMedia
         'area',
         'amount',
     ];
+    //My Scops List
+    public function scopeCityFilter($query,$cityId){
+        return $query->where('city_id', $cityId);
+    }
+    public function scopeTypeFilter($query,$typeId){
+        return $query->where('estate_type', $typeId);
+    }
+    public function scopeAmountFilter($query,$min,$max){
+        if ($min !== null && $max !== null) {
+            return $query->whereBetween('amount', [$min, $max]);
+        } elseif ($min !== null) {
+            return $query->where('amount', '>=', $min);
+        } elseif ($max !== null) {
+            return $query->where('amount', '<=', $max);
+        }
+    }
+
 
     public function City(): BelongsTo
     {
@@ -49,6 +64,10 @@ class Estates extends Model implements HasMedia
 
     public function User(): BelongsTo
     {
-        return $this->belongsTo(User::class());
+        return $this->belongsTo(User::class);
+    }
+    public function favorites()
+    {
+        return $this->belongsToMany(User::class, 'favorites');
     }
 }

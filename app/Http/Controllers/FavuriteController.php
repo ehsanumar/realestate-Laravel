@@ -12,7 +12,13 @@ class FavuriteController extends Controller
      */
     public function index()
     {
-        //
+        $favurites = Favurite::with(['estate', 'estate.media' => function ($query) {
+            $query->where('collection_name', 'estate_image');
+        }])
+            ->where('user_id', auth()->user()->id)
+            ->paginate(12);
+
+        return view('estate.estate-favurite', compact(['favurites']));
     }
 
     /**
@@ -28,7 +34,16 @@ class FavuriteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $checkToHave = Favurite::where('user_id', auth()->user()->id)
+            ->where('estate_id', $request['estate_id'])
+            ->first();
+        if (!$checkToHave) {
+            Favurite::create([
+                'user_id' => auth()->user()->id,
+                'estate_id' => $request['estate_id'],
+            ]);
+        }
+        return back();
     }
 
     /**
@@ -58,8 +73,10 @@ class FavuriteController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Favurite $favurite)
+    public function destroy( $favourite)
     {
-        //
+        $favourite = Favurite::findOrFail($favourite);
+        $favourite->delete();
+        return back();
     }
 }

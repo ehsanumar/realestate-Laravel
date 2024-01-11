@@ -15,9 +15,6 @@
                     <x-nav-link :href="route('index')" :active="request()->routeIs('index')">
                         {{ __('Home') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('index')" :active="request()->routeIs('index')">
-                        {{ __('Favourite') }}
-                    </x-nav-link>
                     @role('agent')
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('index')">
                         {{ __('Dashboard') }}
@@ -32,6 +29,9 @@
 
 
                     @endrole
+                    <x-nav-link :href="route('favourite.index')" :active="request()->routeIs('favourite.index')">
+                        {{ __('Favourite') }}
+                    </x-nav-link>
                 </div>
             </div>
             <!-- Settings Dropdown -->

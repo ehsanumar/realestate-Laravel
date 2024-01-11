@@ -15,19 +15,10 @@ class EstatesController extends Controller
      */
     public function index()
     {
-        $estates = Estates::with(
-            'City:id,city_name',
-            'Type:id,estate_type',
-            'Status:id,estate_status')
-        ->where('user_id', auth()->user()->id)->get();
-
-        $images = [];
-
-        $estates->each(function ($estate) use (&$images) {
-            $images[$estate->id] = $estate->getMedia('estate_image');
-        });
-
-        return view('estate.display-Estates', compact(['estates', 'images']));
+        $estates = Estates::with(['City:id,city_name', 'Type:id,estate_type', 'Status:id,estate_status', 'media' => function ($query) {
+            $query->where('collection_name', 'estate_image');
+        }])->where('user_id', auth()->id())->paginate(9);
+        return view('estate.display-Estates', compact(['estates']));
     }
 
     /**
@@ -71,6 +62,7 @@ class EstatesController extends Controller
         ]);
 
         foreach ($request['images'] as $image) {
+            // dd($image);
             $estate->addMedia($image)->toMediaCollection('estate_image');
         }
 

@@ -1,3 +1,9 @@
+@auth
+ @php
+
+ $count= App\Models\Favurite::where('user_id' ,auth()->user()->id)->count();
+ @endphp
+ @endauth
  <body>
     <div class="site-mobile-menu site-navbar-target">
       <div class="site-mobile-menu-header">
@@ -19,18 +25,11 @@
             >
               <li class="active"><a href="{{ route('index') }}">Home</a></li>
               <li class="has-children">
-                <a href="properties.html">Properties</a>
+                <a >Type Of Estates</a>
                 <ul class="dropdown">
-                  <li><a href="#">Buy Property</a></li>
-                  <li><a href="#">Sell Property</a></li>
-                  <li class="has-children">
-                    <a href="#">Dropdown</a>
-                    <ul class="dropdown">
-                      <li><a href="#">Sub Menu One</a></li>
-                      <li><a href="#">Sub Menu Two</a></li>
-                      <li><a href="#">Sub Menu Three</a></li>
-                    </ul>
-                  </li>
+                  <li><a href="{{ route('all') }}">All Estate</a></li>
+                  <li><a href="{{ route('buy') }}">Buy Estate</a></li>
+                  <li><a href="{{ route('rent') }}">rent Estate</a></li>
                 </ul>
               </li>
               <li><a href="{{ route('services') }}">Services</a></li>
@@ -38,7 +37,7 @@
               <li><a href="{{ route('contactus') }}">Contact Us</a></li>
               @auth
               <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-              <li><i class="fa badge fa-lg" value=8>&#xf07a;</i></li>
+              <li><a style="background: #005555; border-radius:100%; width: 40px; height: 40px; text-align: center; display: flex; justify-content: center; align-items: center;" href="{{ route('favourite.index') }}" ><i class="fa badge fa-lg" value={{ $count }} >&#xf07a;</i></a></li>
 
                   @else
                   <li><a href="{{ route('login') }}">Login</a></li>

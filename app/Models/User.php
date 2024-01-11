@@ -26,7 +26,6 @@ class User extends Authenticatable implements HasMedia
         'name',
         'email',
         'password',
-        'is_admin',
     ];
 
     /**
@@ -51,5 +50,9 @@ class User extends Authenticatable implements HasMedia
     public function estate(): HasMany
     {
         return $this->hasMany(Estates::class);
+    }
+    public function favurite(): HasMany
+    {
+        return $this->hasMany(Favurite::class);
     }
 }

@@ -7,11 +7,10 @@
         <div class="container">
             <div class="row">
                 @foreach ($estates as $estate)
-                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 ">
-                        <div class="property-item ">
-
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 " style="margin-bottom: 50px; ">
+                        <div class="property-item " style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;" >
                             <a href="property-single.html" class="img">
-                                <img src="{{ $images[$estate->id][0]->getUrl() }}" alt="Image" class="img-fluid"
+                                <img src="{{ $estate->media[0]->getUrl()  }}" alt="Image" class="img-fluid"
                                     style="width: 400px; border-radius: 10px; height: 70vh;" />
                             </a>
 
@@ -21,11 +20,11 @@
 
                                         <span class="city d-block mb-3">
                                             <i class='fas fa-map-marker-alt text-warning'></i>
-                                            {{ $estate->location }}</>
+                                            {{ $estate->City->city_name }}</>
 
                                 </div>
                                 <div>
-                                    <div class="d-flex gap-5">
+                                    <div class="d-flex gap-3">
                                         <span class="d-block mb-2 text-black-50">area: {{ $estate->area }}m</span>
                                         <span class="d-block mb-2 text-black-50">Type:
                                             {{ $estate->Type->estate_type }}</span>
@@ -87,6 +86,7 @@
 
                     </div>
                 @endforeach
+                {{ $estates->links() }}
 
 
 
