@@ -66,8 +66,8 @@ class Estates extends Model implements HasMedia
     {
         return $this->belongsTo(User::class);
     }
-    public function favorites()
+    public function favurites()
     {
-        return $this->belongsToMany(User::class, 'favorites');
+        return $this->hasMany(Favurite::class, 'estate_id');
     }
 }

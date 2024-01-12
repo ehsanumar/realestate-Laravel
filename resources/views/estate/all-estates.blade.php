@@ -56,16 +56,15 @@
     <div class="section section-properties">
         <div class="container">
             <div class="row ">
-                {{-- @dd($images) --}}
                 @foreach ($allEstates as $estate)
                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 " style="margin-bottom: 50px; ">
                         <div class="property-item "
                             style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;">
                             <a href="{{ route('single.estate', ['id' => $estate->id]) }}" class="img">
-                                {{-- <img src="{{ $estate->media[0]->getUrl() }}" alt="Image" class="img-fluid"
-                                    style="width: 400px; border-radius: 10px; height: 70vh; " /> --}}
-                                    <img src="{{ asset('images/img_5.jpg') }}" alt="image" class="img-fluid"
-                                    style="width: 400px; border-radius: 10px; height: 70vh;">
+                                <img src="{{ $estate->media->first()->getUrl() }}" alt="Image" class="img-fluid"
+                                    style="width: 400px; border-radius: 10px; height: 70vh; " />
+                                    {{-- <img src="{{ asset('images/img_5.jpg') }}" alt="image" class="img-fluid"
+                                    style="width: 400px; border-radius: 10px; height: 70vh;"> --}}
                             </a>
 
                             <div class="property-content">

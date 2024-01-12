@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Estates;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class FilterEstateController extends Controller
 {
@@ -26,7 +27,7 @@ class FilterEstateController extends Controller
     public function allEstate(Request $request)
     {
         $data = getCityTypesAndStatuses();
-        $allEstates = $this->FilterCheck($request)->latest()->paginate(12);
+        $allEstates = $this->FilterCheck($request)->paginate(12);
         return view('estate.all-estates', compact(['allEstates','data']));
     }
 

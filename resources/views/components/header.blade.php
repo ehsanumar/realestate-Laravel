@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="Untree.co" />
-    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="shortcut icon" href="https://png.pngtree.com/png-vector/20221014/ourmid/pngtree-house-real-estate-icon-png-image_6319467.png" />
 
     <meta name="description" content="" />
     <meta name="keywords" content="bootstrap, bootstrap5" />
@@ -26,6 +26,6 @@
 
 <script src="https://kit.fontawesome.com/8ef4a8399d.js" crossorigin="anonymous"></script>
     <title>
-      Property &mdash; Free Bootstrap 5 Website Template by Untree.co
+      RealEstate
     </title>
   </head>

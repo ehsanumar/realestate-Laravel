@@ -5,12 +5,11 @@
           <div class="col-lg-4">
             <div class="widget">
               <h3>Contact</h3>
-              <address>43 Raymouth Rd. Baltemoer, London 3910</address>
+              <address>Ehsan Umar Hussin</address>
               <ul class="list-unstyled links">
-                <li><a href="tel://11234567890">+1(123)-456-7890</a></li>
-                <li><a href="tel://11234567890">+1(123)-456-7890</a></li>
+                <li><a href="tel://7512477494">+964 751 247 7494</a></li>
                 <li>
-                  <a href="mailto:info@mydomain.com">info@mydomain.com</a>
+                  <a href="ehsanumar84@gmail.com">ehsanumar84@gmail.com</a>
                 </li>
               </ul>
             </div>
@@ -83,12 +82,12 @@
     <!-- /.site-footer -->
 
     <!-- Preloader -->
-    <div id="overlayer"></div>
+    {{-- <div id="overlayer"></div>
     <div class="loader">
       <div class="spinner-border" role="status">
         <span class="visually-hidden">Loading...</span>
       </div>
-    </div>
+    </div> --}}
 
   <script src="{{ asset('build/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('build/js/tiny-slider.js') }}"></script>

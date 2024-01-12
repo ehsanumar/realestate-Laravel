@@ -5595,12 +5595,6 @@ textarea.form-control-lg {
   width: 1rem;
   height: 1rem; }
 
-@media (prefers-reduced-motion: reduce) {
-  .spinner-border,
-  .spinner-grow {
-    -webkit-animation-duration: 1.5s;
-    animation-duration: 1.5s; } }
-
 .offcanvas {
   position: fixed;
   bottom: 0;
